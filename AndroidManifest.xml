@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.qgallery"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppThemeDark" >
+        <activity
+            android:name=".ui.ImageCircleActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:excludeFromRecents="false"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark.FullScreen" >
+            <intent-filter>
+                <action android:name="com.lge.quickcover" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.ImageGridActivity"
+                  android:label="@string/app_name">
+        </activity>        
+        <activity
+            android:name=".ui.ImageDetailActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".ui.ImageGridActivity"
+            android:theme="@style/AppThemeDark.FullScreen" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ImageGridActivity" />
+        </activity>
+        <provider
+            android:name=".provider.ImageProvider"
+            android:authorities="kr.qgallery" >
+        </provider>
+
+    </application>
+      
+</manifest>
